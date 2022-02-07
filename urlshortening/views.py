@@ -37,7 +37,8 @@ def longUrl(request):
       if urlForm.is_valid():
          full_url = urlForm.cleaned_data.get('url')
          url = get_short_url(full_url)
-         return render(request, 'longUrl.html', {'full_url': url,'short_id': url.short_id})
+         return render(request, 'longUrl.html', \
+                {'full_url': url,'short_id': 'http://tinyurl.com/'+str(url.short_id)})
     else:
       urlForm = LongUrlForm()
     return render(request, 'longUrl.html', {'short_id': short_id})

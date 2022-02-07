@@ -37,11 +37,11 @@ Give necessary inputs
 Run development server
 
 ```
-./manage.py runserver 0.0.0.0:8000
+./manage.py runserver 0.0.0.0:8080
 ```
 
 
-Service
+Services
 
 1.  Short the URL 
 
