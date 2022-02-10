@@ -26,8 +26,7 @@ class TheatreViewSet(BaseViewSet):
            slots = models.Slot.objects.filter(slot_date=data['day']).filter(theatre=instance)
            get_avail_slots = utils.get_avail_slots(slots)
        else:
-           slots = models.Slot.objects.filter(theatre=instance)
-           get_avail_slots = utils.get_avail_slots(slots)
+           return Response("provide the date", status=status.HTTP_400_BAD_REQUEST)
        return Response(get_avail_slots)
 
     

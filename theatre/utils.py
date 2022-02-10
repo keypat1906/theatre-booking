@@ -48,12 +48,13 @@ def get_avail_slots(slots):
    if slottime[0][0] > datetime.time(8,0,0):
        availtime.append([datetime.time(8,0,0),slottime[0][0]])
 
-   for start, end in  slottime:
+   prev=slottime[0][1]
+   for start, end in  slottime[1:]:
        if prev < start:
           diff = [prev, start]
           availtime.append(diff)
        prev = end
-
-   availtime.append([end,datetime.time(20,0,0)])
+   if prev < datetime.time(20,0,0):
+       availtime.append([prev,datetime.time(20,0,0)])
    return availtime
    
