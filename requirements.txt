@@ -1,4 +1,8 @@
 Django==1.9.7
+<<<<<<< HEAD
 djangorestframework==3.3.0
 django-filter==0.10.0
 
+=======
+django-widget-tweaks==1.4.11
+>>>>>>> 8848cf5aec9d8fea66d3b6d78fca148a1c02e7bc
