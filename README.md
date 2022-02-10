@@ -1,4 +1,4 @@
-# url-shortning
+# theatre booking
 
 Install virtualenv
 ```
