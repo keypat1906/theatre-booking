@@ -1,7 +1,4 @@
 from datetime import datetime, date
-from django.core.exceptions import ObjectDoesNotExist
-
-
 from rest_framework import serializers
 from rest_framework.fields import empty
 from .models import *

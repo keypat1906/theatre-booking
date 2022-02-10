@@ -9,7 +9,6 @@ def get_theatre_slots(slots,start_time,end_time):
  
    for t in theatres_all:
           tid.append(t['theatre_id'])
-   print("theatres are ",tid)
   
    if slots.count() == 0:
        return tid
@@ -17,7 +16,6 @@ def get_theatre_slots(slots,start_time,end_time):
        if slot['theatre_id'] in tid:
            tid.remove(slot['theatre_id'])
 
-   print("updated theatres are ",tid)
 
    print ("slots are ",slots.values())
    for slot in slots.values():
@@ -25,7 +23,6 @@ def get_theatre_slots(slots,start_time,end_time):
            slots_dit[slot['theatre_id']].append([slot['start_time'],slot['end_time']])
        else:
            slots_dit[slot['theatre_id']] = [slot['start_time'],slot['end_time']]
-   print("slot dit",slots_dit)
 
    for theatre, slots in slots_dit.items():
            if slots[0] >= datetime.datetime.strptime(end_time, '%H-%M-%S').time():
@@ -44,7 +41,6 @@ def get_avail_slots(slots):
    prev=datetime.time(1,1,1)
    for slot in slots:
        slottime.append([slot['start_time'],slot['end_time']])
-   print("slottime",slottime)
 
    if len(slottime) == 0:
        return [datetime.time(8,0,0),datetime.time(20,0,0)]
@@ -59,6 +55,5 @@ def get_avail_slots(slots):
        prev = end
 
    availtime.append([end,datetime.time(20,0,0)])
-   print ("avail slots are ", availtime)
    return availtime
    

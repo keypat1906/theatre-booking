@@ -1,26 +1,14 @@
-from rest_framework import exceptions
 from rest_framework import viewsets, status, mixins, filters
-from rest_framework.decorators import detail_route, list_route
-from rest_framework.permissions import AllowAny
+from rest_framework.decorators import detail_route
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
-from rest_framework.viewsets import GenericViewSet
-
-from rest_framework import viewsets, status, mixins, filters
-
 from . import serializers
 from . import models
 from . import utils
+
 class BaseViewSet(viewsets.ReadOnlyModelViewSet, mixins.UpdateModelMixin,
                   mixins.CreateModelMixin):
-    pass
-
-
-class ExtendedBaseViewSet(BaseViewSet, mixins.DestroyModelMixin):
-    """
-    New class used that allows retrieve, listing and destroy model mixins
-    """
     pass
 
 
@@ -33,7 +21,6 @@ class TheatreViewSet(BaseViewSet):
     @detail_route(methods=['get'])
     def available_slots(self, request, pk=None):
        data = dict(request.query_params.items())
-       print("Data is",data)
        instance = self.get_object()
        if 'day' in data:
            slots = models.Slot.objects.filter(slot_date=data['day']).filter(theatre=instance)
@@ -41,7 +28,6 @@ class TheatreViewSet(BaseViewSet):
        else:
            slots = models.Slot.objects.filter(theatre=instance)
            get_avail_slots = utils.get_avail_slots(slots)
-       print ("slots",slots.count())
        return Response(get_avail_slots)
 
     
@@ -57,7 +43,6 @@ def getslotlist(request, *args, **kwargs):
        start_time = request.GET.get('start_time')
        end_time = request.GET.get('end_time')
        slot_date = request.GET.get('slot_date')
-       print("calling")
        if start_time and end_time and slot_date:
            slots = models.Slot.objects.filter(slot_date=slot_date)
            get_avail_slots = utils.get_theatre_slots(slots,start_time,end_time)
