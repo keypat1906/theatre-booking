@@ -42,13 +42,33 @@ Run development server
 
 Services
 
-1.  Short the URL 
 
-http://localhost:8080/linkshortening/fullurl/
+1. List all the theaters that are owned by the company
+
+GET http://localhost:8080/theatre/theatre
 
 
-2. Retrieve the Long URL
+2. Display the schedule for a given day for a theatre of user's choice
 
-http://localhost:8080/linkshortening/shorturl/
+GET http://localhost:8080/theatre/slot/?theatre_id=2
+
+
+3. Allow the performer to choose a theater and get the best available show slot. For example, in a given theater X I should be able to 
+select the best possible slot for a given date.
+
+GET http://localhost:8080/theatre/theatre/1/available_slots/
+
+
+4. Allow the performer to get a slot in any of the theatres for a given time slot. For example, I should be able to look for a Sunday 6 to 7 
+p.m slot in any of the available theaters
+
+GET http://localhost:8080/theatre/slotlist?start_time=14-00-00&end_time=17-00-00&slot_date=2022-02-1
+
+
+5. Allow the performer to choose both the time and venue. For example, reserve a 3.15 to 4.45 p.m slot on 4th Feb in Theatre Y
+
+POST http://localhost:8080/theatre/slot/
+payload {"slot_date":  "2022-02-28", "start_time”:”11:00:00”,”end_time":"16:00:00”, "theatre": 4 }
+
 
 
