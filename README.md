@@ -40,12 +40,13 @@ Run development server
 ```
 
 
-Services
+API Endpoints
 
 
 1. List all the theaters that are owned by the company
 
 GET http://localhost:8080/theatre/theatre
+GET http://localhost:8080/theatre/theatre/{theatre_id}/
 
 
 2. Display the schedule for a given day for a theatre of user's choice
@@ -70,5 +71,6 @@ GET http://localhost:8080/theatre/slotlist?start_time=14-00-00&end_time=17-00-00
 POST http://localhost:8080/theatre/slot/
 payload {"slot_date":  "2022-02-28", "start_time”:”11:00:00”,”end_time":"16:00:00”, "theatre": 4 }
 
+User can only choose slot from 8 AM to 8 PM, otherwise 400 Bad request ["showtime should be between 8 AM and 8 PM"]
 
 
