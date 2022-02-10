@@ -57,8 +57,7 @@ GET http://localhost:8080/theatre/slot/?theatre_id=2
 3. Allow the performer to choose a theater and get the best available show slot. For example, in a given theater X I should be able to 
 select the best possible slot for a given date.
 
-GET http://localhost:8080/theatre/theatre/1/available_slots/
-
+GET http://localhost:8080/theatre/theatre/2/available_slots?day=2022-02-01
 
 4. Allow the performer to get a slot in any of the theatres for a given time slot. For example, I should be able to look for a Sunday 6 to 7 
 p.m slot in any of the available theaters
